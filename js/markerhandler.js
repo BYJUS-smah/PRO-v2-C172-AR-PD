@@ -23,12 +23,12 @@ AFRAME.registerComponent("markerhandler", {
       "https://raw.githubusercontent.com/whitehatjr/ar-toy-store-assets/master/toy-shop.png";
 
     swal({
-      title: "Welcome to Toy Shop!!",
+      title: "¿¿Bienvenido a la tienda de juguetes!!",
       icon: iconUrl,
       content: {
         element: "input",
         attributes: {
-          placeholder: "Type your uid Ex:( U01 )"
+          placeholder: "Escribe tu id Ej:( U01 )"
         }
       }
     }).then(inputValue => {
@@ -42,7 +42,7 @@ AFRAME.registerComponent("markerhandler", {
       swal({
         icon: "warning",
         title: toy.toy_name.toUpperCase(),
-        text: "This toy is out of stock!!!",
+        text: "¡¡¡Este juguete está agotado!!!",
         timer: 2500,
         buttons: false
       });
@@ -75,7 +75,7 @@ AFRAME.registerComponent("markerhandler", {
 
         swal({
           icon: "https://i.imgur.com/4NZ6uLY.jpg",
-          title: "Thanks For Order !",
+          title: "¡Gracias por tu compra!",
           text: "  ",
           timer: 2000,
           buttons: false
@@ -90,7 +90,7 @@ AFRAME.registerComponent("markerhandler", {
     }
   },
   handleOrder: function(uid, toy) {
-    // Reading current UID order details
+    // Lectura de los detalles del pedido del UID actual
     firebase
       .firestore()
       .collection("users")
@@ -100,10 +100,10 @@ AFRAME.registerComponent("markerhandler", {
         var details = doc.data();
 
         if (details["current_orders"][toy.id]) {
-          // Increasing Current Quantity
+          // Aumentar la cantidad actual
           details["current_orders"][toy.id]["quantity"] += 1;
 
-          //Calculating Subtotal of item
+          //Calcular el subtotal del artículo
           var currentQuantity = details["current_orders"][toy.id]["quantity"];
 
           details["current_orders"][toy.id]["subtotal"] =
@@ -119,7 +119,7 @@ AFRAME.registerComponent("markerhandler", {
 
         details.total_bill += toy.price;
 
-        // Updating Db
+        // Actualizar Db
         firebase
           .firestore()
           .collection("users")
@@ -145,17 +145,17 @@ AFRAME.registerComponent("markerhandler", {
       .then(doc => doc.data());
   },
   handleOrderSummary: async function() {
-    // Changing modal div visibility
+    // Cambiar la visibilidad del botón div
     var modalDiv = document.getElementById("modal-div");
     modalDiv.style.display = "flex";
-    // Getting UID
+    // Obtener UID
     uid = uid.toUpperCase();
 
-    // Getting Order summary from database
+    // Obtener el resumen del pedido de la base de datos
     var orderSummary = await this.getorderSummary(uid);
 
     var tableBodyTag = document.getElementById("bill-table-body");
-    // Removing old tr data
+    // Eliminar datos antiguos de tr(fila de la tabla)
     tableBodyTag.innerHTML = "";
 
     var currentOrders = Object.keys(orderSummary.current_orders);
@@ -210,13 +210,13 @@ AFRAME.registerComponent("markerhandler", {
     tableBodyTag.appendChild(totalTr);
   },
   handlePayment: function() {
-    // Close Modal
+    // Cerrar el modal
     document.getElementById("modal-div").style.display = "none";
 
-    // Getting UID
+    // Obtener UID
     uid = uid.toUpperCase();
 
-    // Reseting current orders and total bill
+    // Restablecer los pedidos actuales y el precio total
     firebase
       .firestore()
       .collection("users")
@@ -228,15 +228,15 @@ AFRAME.registerComponent("markerhandler", {
       .then(() => {
         swal({
           icon: "success",
-          title: "Thanks For Paying !",
-          text: "We Hope You Like Your Toy !!",
+          title: "¡Gracias por tu compra!",
+          text: "¡¡Esperamos que haya disfrutado de su comida!!",
           timer: 2500,
           buttons: false
         });
       });
   },
   handleMarkerLost: function() {
-    // Changing button div visibility
+    // Cambiar la visibilidad del botón div
     var buttonDiv = document.getElementById("button-div");
     buttonDiv.style.display = "none";
   }

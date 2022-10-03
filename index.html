@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ar Toy Shop</title>
+    <title>Tienda de juguetes AR</title>
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
@@ -20,10 +20,10 @@
       crossorigin="anonymous"
     />
 
-    <!-- sweetalert -->
+    <!-- Sweetalert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- El SDK de Firebase es siempre necesario y debe ser listado primero -->
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-firestore.js"></script>
     <script>
@@ -36,14 +36,14 @@
         appId: "1:730692904949:web:0f72a095af54503028a2bc",
         measurementId: "G-WB8D6DY4VW"
       };
-      // Initialize Firebase
+      // Inicializar Firebase
       firebase.initializeApp(firebaseConfig);
     </script>
 
-    <!-- Local StyleSheet -->
+    <!-- Hoja de estilos local -->
     <link href="./style.css" rel="stylesheet" />
 
-    <!--JS Files-->
+    <!-- Arvhivos JS-->
     <script src="./js/addButtons.js"></script>
     <script src="./js/addMarkers.js"></script>
     <script src="./js/markerhandler.js"></script>
@@ -62,19 +62,19 @@
       createbuttons
       createmarkers
     >
-      <!-- Camera -->
+      <!-- Cámara -->
       <a-entity camera></a-entity>
     </a-scene>
-    <!-- Button Main Div -->
+    <!-- Botón Div principal -->
     <div id="button-div"></div>
 
-    <!-- Order Summary Boilerplate -->
+    <!-- Plantilla para el resumen del pedido -->
     <div class="container">
       <div id="modal-div" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Order Summary</h5>
+              <h5 class="modal-title">Resumen del pedido</h5>
               <button
                 type="button"
                 class="close"
@@ -90,16 +90,16 @@
                 <table class="table table-condensed">
                   <thead>
                     <tr>
-                      <td><strong>Item</strong></td>
-                      <td class="text-center"><strong>Price</strong></td>
-                      <td class="text-center"><strong>Quantity</strong></td>
+                      <td><strong>Artículo</strong></td>
+                      <td class="text-center"><strong>Precio</strong></td>
+                      <td class="text-center"><strong>Cantidad</strong></td>
                       <td class="text-right"><strong>Total</strong></td>
                     </tr>
                   </thead>
                   <tbody id="bill-table-body">
                     <!-- foreach ($order->lineItems as $line)  -->
 
-                    <!-- Your Order Summary UI will comes here
+                    <!-- La interfaz de usuario del resumen del pedido va aquí 
 
                  --></tbody>
                 </table>
@@ -107,7 +107,7 @@
             </div>
             <div class="modal-footer">
               <button id="pay-button" type="button" class="btn btn-primary">
-                Pay Now
+                Pagar ahora
               </button>
             </div>
           </div>
