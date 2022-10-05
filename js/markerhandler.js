@@ -47,28 +47,28 @@ AFRAME.registerComponent("markerhandler", {
         buttons: false
       });
     } else {
-      // Changing Model scale to initial scale
+      // Cambiar escala del modelo a la escala inicial
       var model = document.querySelector(`#model-${toy.id}`);
       model.setAttribute("position", toy.model_geometry.position);
       model.setAttribute("rotation", toy.model_geometry.rotation);
       model.setAttribute("scale", toy.model_geometry.scale);
 
-      // make model visible
+      // Hacer el modelo visible
       var model = document.querySelector(`#model-${toy.id}`);
       model.setAttribute("visible", true);
 
-      // make description Container visible
+      // Hacer la descripción del contenedor visible
       var mainPlane = document.querySelector(`#main-plane-${toy.id}`);
       mainPlane.setAttribute("visible", true);
 
-      // Changing button div visibility
+      // Cambiar la visibilidad del botón div 
       var buttonDiv = document.getElementById("button-div");
       buttonDiv.style.display = "flex";
 
       var orderButtton = document.getElementById("order-button");
       var orderSummaryButtton = document.getElementById("order-summary-button");
       var payButton = document.getElementById("pay-button");
-      // Handling Click Events
+      // Manejar los eventos de clic
       orderButtton.addEventListener("click", () => {
         uid = uid.toUpperCase();
         this.handleOrder(uid, toy);
@@ -155,7 +155,7 @@ AFRAME.registerComponent("markerhandler", {
     var orderSummary = await this.getorderSummary(uid);
 
     var tableBodyTag = document.getElementById("bill-table-body");
-    // Eliminar datos antiguos de tr(fila de la tabla)
+    // Eliminar datos antiguos 
     tableBodyTag.innerHTML = "";
 
     var currentOrders = Object.keys(orderSummary.current_orders);
